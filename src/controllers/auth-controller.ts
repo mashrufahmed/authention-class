@@ -3,6 +3,7 @@ import expressAsyncHandler from 'express-async-handler';
 import createHttpError from 'http-errors';
 import jwt from 'jsonwebtoken';
 import User from '../models/user-model';
+import sendMail from '../service/email.service';
 
 export const register = expressAsyncHandler(async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -35,6 +36,7 @@ export const login = expressAsyncHandler(async (req, res, next) => {
   const exitingUser = await User.findOne({ email });
   if (!exitingUser) {
     next(createHttpError(400, 'User not found'));
+    return;
   }
 
   const hashedPassword = await bcrypt.compare(
@@ -57,6 +59,14 @@ export const login = expressAsyncHandler(async (req, res, next) => {
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     maxAge: 24 * 60 * 60 * 1000,
+  });
+
+  await sendMail({
+    name: exitingUser?.name,
+    email: exitingUser?.email,
+    ip: req.ip as string,
+    device: req.headers['user-agent'] as string,
+    location: req.headers['x-forwarded-for'] as string,
   });
 
   res.status(201).json({

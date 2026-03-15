@@ -20,6 +20,7 @@ export default async function isAuthenticated(
     token,
     process.env.JWT_SECRET as string,
   ) as jwtPayload;
+  
   const getUser = await User.findById(decodedToken.id);
   if (!getUser) {
     next(createHttpError(401, 'Unauthorized'));

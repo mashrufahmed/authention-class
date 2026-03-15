@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Alert</title>
+  </head>
+
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background: #f4f6f8;
+      font-family: Arial, Helvetica, sans-serif;
+    "
+  >
+    <table width="100%" cellpadding="0" cellspacing="0" style="padding: 40px 0">
+      <tr>
+        <td align="center">
+          <table
+            width="600"
+            cellpadding="0"
+            cellspacing="0"
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              overflow: hidden;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            "
+          >
+            <!-- Header -->
+            <tr>
+              <td
+                style="background: #1f2937; padding: 20px; text-align: center"
+              >
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px">
+                  <%= appName %>
+                </h1>
+              </td>
+            </tr>
+
+            <!-- Body -->
+            <tr>
+              <td style="padding: 30px; color: #333">
+                <h2 style="margin-top: 0">Login Successful</h2>
+
+                <p>Hi <strong><%= userName %></strong>,</p>
+
+                <p>Your account was successfully logged in.</p>
+
+                <table style="margin-top: 20px; font-size: 14px">
+                  <tr>
+                    <td style="padding: 6px 0"><strong>Time:</strong></td>
+                    <td style="padding: 6px 0"><%= loginTime %></td>
+                  </tr>
+
+                  <tr>
+                    <td style="padding: 6px 0"><strong>IP Address:</strong></td>
+                    <td style="padding: 6px 0"><%= ip %></td>
+                  </tr>
+
+                  <tr>
+                    <td style="padding: 6px 0"><strong>Device:</strong></td>
+                    <td style="padding: 6px 0"><%= device %></td>
+                  </tr>
+
+                  <tr>
+                    <td style="padding: 6px 0"><strong>Location:</strong></td>
+                    <td style="padding: 6px 0"><%= location %></td>
+                  </tr>
+                </table>
+
+                <p style="margin-top: 25px">
+                  If this wasn't you, please secure your account immediately.
+                </p>
+
+                <a
+                  href="<%= securityLink %>"
+                  style="
+                    display: inline-block;
+                    padding: 12px 20px;
+                    background: #ef4444;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    margin-top: 10px;
+                  "
+                >
+                  Secure Account
+                </a>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td
+                style="
+                  background: #f9fafb;
+                  padding: 20px;
+                  text-align: center;
+                  font-size: 12px;
+                  color: #6b7280;
+                "
+              >
+                © <%= new Date().getFullYear() %> <%= appName %>. All rights
+                reserved.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

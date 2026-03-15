@@ -3,7 +3,7 @@ import Post from '../models/post-model';
 
 export const createPost = expressAsyncHandler(async (req, res, next) => {
   const { title, description } = req.body;
-
+  
   const newPost = await Post.create({
     userId: req?.user?.id,
     title,

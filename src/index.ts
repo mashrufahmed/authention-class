@@ -1,5 +1,8 @@
+import dns from 'node:dns/promises';
 import app from './app';
 import connectDb from './config/db-config';
+
+dns.setServers(['1.1.1.1']);
 
 const startServer = async () => {
   await connectDb();
